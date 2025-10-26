@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Démonstration des Modes - Aide Devoirs Collège</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .demo-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .demo-panel {
+            border: 3px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            background-color: white;
+        }
+        
+        .demo-panel h3 {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+            border: none;
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+        }
+        
+        .demo-dyslexic h3 {
+            background-color: #BEE3F8;
+            color: #2C5282;
+        }
+        
+        .demo-normal h3 {
+            background-color: #FED7D7;
+            color: #742A2A;
+        }
+        
+        .feature-list {
+            background-color: var(--color-bg);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .feature-item {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--spacing-xs) 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-label {
+            font-weight: 600;
+        }
+        
+        .preview-box {
+            border: 2px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-md);
+            min-height: 200px;
+        }
+        
+        /* Simulation mode normal dans le panneau de droite */
+        .demo-normal .preview-box {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            letter-spacing: normal;
+            word-spacing: normal;
+        }
+        
+        .demo-normal .preview-box h4 {
+            border-left: none;
+            padding-left: 0;
+            font-size: 20px;
+        }
+        
+        .demo-normal .preview-box ul {
+            list-style: disc;
+            margin-left: 2rem;
+        }
+        
+        .demo-normal .preview-box ul li::before {
+            content: none;
+        }
+        
+        .demo-normal .preview-box em {
+            font-style: italic;
+            font-weight: normal;
+            color: inherit;
+        }
+        
+        @media (max-width: 1024px) {
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Bouton de toggle -->
+    <button id="reading-mode-toggle" aria-label="Changer le mode de lecture">
+        <span class="icon">📖</span>
+        <span class="text">Mode normal</span>
+    </button>
+    
+    <div class="demo-container">
+        
+        <header style="text-align: center; margin-bottom: var(--spacing-xl);">
+            <h1>📊 Démonstration des Modes</h1>
+            <p style="font-size: var(--font-size-large); color: #718096;">
+                Comparez visuellement les deux modes d'affichage
+            </p>
+        </header>
+        
+        <div class="alert alert-info">
+            <strong>Astuce&nbsp;:</strong> Utilisez le bouton en bas à droite pour basculer entre les modes et voir la différence en temps réel&nbsp;!
+        </div>
+        
+        <div class="demo-grid">
+            
+            <!-- Panneau Mode Dyslexique -->
+            <div class="demo-panel demo-dyslexic">
+                <h3>🎯 Mode Dyslexique</h3>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <span class="feature-label">Police&nbsp;:</span>
+                        <span>OpenDyslexic</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-label">Taille&nbsp;:</span>
+                        <span>18px</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-label">Interligne&nbsp;:</span>
+                        <span>1.8</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-label">Fond&nbsp;:</span>
+                        <span>Crème (#FDFBF7)</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-label">Espacement&nbsp;:</span>
+                        <span>Généreux</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-label">Italique&nbsp;:</span>
+                        <span>❌ Non</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-label">Bordures titres&nbsp;:</span>
+                        <span>✅ Oui</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-label">Largeur ligne&nbsp;:</span>
+                        <span>70 caractères</span>
+                    </div>
+                </div>
+                
+                <div class="preview-box">
+                    <h4>Aperçu du rendu</h4>
+                    
+                    <p>
+                        Voici un exemple de texte avec le mode dyslexique activé. 
+                        La police OpenDyslexic aide à distinguer les lettres. 
+                        L'interligne généreux facilite la lecture ligne par ligne.
+                    </p>
+                    
+                    <p>
+                        <em>Ce texte est mis en emphase</em> avec du gras et une couleur au lieu de l'italique.
+                    </p>
+                    
+                    <ul>
+                        <li>Les puces sont personnalisées</li>
+                        <li>Plus visibles et colorées</li>
+                        <li>Faciles à repérer</li>
+                    </ul>
+                    
+                    <p>
+                        <strong>As-tu une question&nbsp;?</strong> N'hésite pas à demander&nbsp;!
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Panneau Mode Normal -->
+            <div class="demo-panel demo-normal">
+                <h3>📖 Mode Normal</h3>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <span class="feature-label">Police&nbsp;:</span>
+                        <span>Système (Arial, Segoe...)</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-label">Taille&nbsp;:</span>
+                        <span>16px</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-label">Interligne&nbsp;:</span>
+                        <span>1.6</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-label">Fond&nbsp;:</span>
+                        <span>Blanc (#FFFFFF)</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-label">Espacement&nbsp;:</span>
+                        <span>Standard</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-label">Italique&nbsp;:</span>
+                        <span>✅ Oui</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-label">Bordures titres&nbsp;:</span>
+                        <span>❌ Non</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-label">Largeur ligne&nbsp;:</span>
+                        <span>80 caractères</span>
+                    </div>
+                </div>
+                
+                <div class="preview-box">
+                    <h4>Aperçu du rendu</h4>
+                    
+                    <p>
+                        Voici un exemple de texte avec le mode normal activé. 
+                        La police système est utilisée pour un affichage standard. 
+                        L'interligne est celui couramment utilisé sur le web.
+                    </p>
+                    
+                    <p>
+                        <em>Ce texte est mis en emphase</em> avec de l'italique comme d'habitude.
+                    </p>
+                    
+                    <ul>
+                        <li>Les puces sont standards</li>
+                        <li>Format classique du web</li>
+                        <li>Comme sur la plupart des sites</li>
+                    </ul>
+                    
+                    <p>
+                        <strong>As-tu une question&nbsp;?</strong> N'hésite pas à demander&nbsp;!
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Section comparaison avantages -->
+        <section style="margin-top: var(--spacing-xl);">
+            <h2 style="text-align: center;">⚖️ Quand utiliser quel mode&nbsp;?</h2>
+            
+            <div class="demo-grid">
+                <div class="card">
+                    <div class="card-title">🎯 Mode Dyslexique</div>
+                    <h4>Recommandé pour&nbsp;:</h4>
+                    <ul>
+                        <li>Les élèves dyslexiques</li>
+                        <li>Les personnes ayant des difficultés de lecture</li>
+                        <li>Les lecteurs préférant des grands caractères</li>
+                        <li>Une lecture longue durée</li>
+                    </ul>
+                    
+                    <h4 style="margin-top: var(--spacing-md);">Avantages&nbsp;:</h4>
+                    <ul>
+                        <li>Réduction de la fatigue visuelle</li>
+                        <li>Meilleure distinction des lettres</li>
+                        <li>Repères visuels clairs</li>
+                        <li>Espacement confortable</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">📖 Mode Normal</div>
+                    <h4>Recommandé pour&nbsp;:</h4>
+                    <ul>
+                        <li>Les lecteurs sans difficultés spécifiques</li>
+                        <li>Les parents et professeurs</li>
+                        <li>Une lecture rapide</li>
+                        <li>Les utilisateurs préférant un affichage classique</li>
+                    </ul>
+                    
+                    <h4 style="margin-top: var(--spacing-md);">Avantages&nbsp;:</h4>
+                    <ul>
+                        <li>Familier et rassurant</li>
+                        <li>Plus compact (plus de contenu visible)</li>
+                        <li>Chargement plus rapide</li>
+                        <li>Compatible avec tous les navigateurs</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section instructions -->
+        <section style="margin-top: var(--spacing-xl);">
+            <h2 style="text-align: center;">💡 Comment ça marche&nbsp;?</h2>
+            
+            <div class="card">
+                <h3>Utilisation du bouton de toggle</h3>
+                
+                <ol>
+                    <li>
+                        <strong>Cliquez sur le bouton en bas à droite</strong> de la page
+                    </li>
+                    <li>
+                        Le mode change instantanément
+                    </li>
+                    <li>
+                        <strong>Votre choix est sauvegardé</strong> et sera appliqué automatiquement lors de votre prochaine visite
+                    </li>
+                    <li>
+                        Vous pouvez changer de mode à tout moment
+                    </li>
+                </ol>
+                
+                <div class="alert alert-success" style="margin-top: var(--spacing-md);">
+                    <strong>Astuce&nbsp;:</strong> Vous pouvez aussi utiliser le clavier&nbsp;! Appuyez sur <kbd>Tab</kbd> pour atteindre le bouton, puis sur <kbd>Entrée</kbd> pour basculer.
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section feedback -->
+        <section style="margin-top: var(--spacing-xl); text-align: center;">
+            <h2>💬 Votre avis compte&nbsp;!</h2>
+            
+            <p style="font-size: var(--font-size-large); max-width: 600px; margin: 0 auto var(--spacing-lg);">
+                Quel mode préférez-vous&nbsp;? N'hésitez pas à nous faire part de vos retours pour améliorer continuellement l'expérience de lecture.
+            </p>
+            
+            <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
+                <button class="btn btn-primary">Je préfère le mode dyslexique</button>
+                <button class="btn btn-secondary">Je préfère le mode normal</button>
+            </div>
+        </section>
+        
+    </div>
+    
+    <footer style="margin-top: var(--spacing-xl); padding: var(--spacing-lg); text-align: center; border-top: 2px solid var(--color-border);">
+        <p>
+            <strong>Aide Devoirs Collège</strong> - Une expérience de lecture adaptée à tous
+        </p>
+        <p style="color: #718096; margin-top: var(--spacing-sm);">
+            <a href="index.html">← Retour à l'accueil</a>
+        </p>
+    </footer>
+    
+    <script src="reading-mode-toggle.js"></script>
+
+</body>
+</html>
