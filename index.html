@@ -5,26 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Aide aux devoirs pour collégiens - Interface adaptée aux dyslexiques">
     <title>Aide Devoirs Collège - Accueil</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     
-    <!-- Navigation principale
+    <!-- Bouton de toggle mode lecture (fixe en bas à droite) -->
+    <button id="reading-mode-toggle" aria-label="Changer le mode de lecture">
+        <span class="icon">📖</span>
+        <span class="text">Mode normal</span>
+    </button>
+    
+    <!-- Navigation principale -->
     <nav>
         <ul>
             <li><a href="index.html" class="active">Accueil</a></li>
             <li><a href="matieres.html">Matières</a></li>
             <li><a href="organisation.html">Mon Organisation</a></li>
-            <li><a href="aide.html">Besoin d'aide ?</a></li>
+            <li><a href="aide.html">Besoin d'aide&nbsp;?</a></li>
         </ul>
-    </nav> -->
+    </nav>
 
     <!-- En-tête principal -->
     <header class="content-section">
         <h1>Bienvenue sur ton espace d'aide aux devoirs 📚</h1>
         
         <div class="alert alert-success">
-            <strong>Bravo !</strong> Tu as décidé de prendre en main tes devoirs. C'est déjà une grande étape !
+            <strong>Bravo&nbsp;!</strong> Tu as décidé de prendre en main tes devoirs. C'est déjà une grande étape&nbsp;!
         </div>
         
         <p>
@@ -53,7 +59,7 @@
                 
                 <div class="card">
                     <div class="card-title">📝 Français</div>
-                    <p>Grammaire, conjugaison, rédaction... Deviens un pro de la langue !</p>
+                    <p>Grammaire, conjugaison, rédaction... Deviens un pro de la langue&nbsp;!</p>
                     <button class="btn btn-primary">Voir les cours</button>
                 </div>
                 
@@ -65,7 +71,7 @@
                 
                 <div class="card">
                     <div class="card-title">🔬 Sciences</div>
-                    <p>SVT, Physique-Chimie... La science c'est passionnant !</p>
+                    <p>SVT, Physique-Chimie... La science c'est passionnant&nbsp;!</p>
                     <button class="btn btn-primary">Voir les cours</button>
                 </div>
                 
@@ -77,7 +83,7 @@
             <h2>Organise tes devoirs</h2>
             
             <div class="alert alert-info">
-                <strong>Astuce :</strong> Bien s'organiser, c'est la moitié du travail !
+                <strong>Astuce&nbsp;:</strong> Bien s'organiser, c'est la moitié du travail&nbsp;!
             </div>
             
             <p>
@@ -99,7 +105,7 @@
             <h2>Conseils pour mieux apprendre</h2>
             
             <div class="card">
-                <h3>🎯 Comment bien réviser ?</h3>
+                <h3>🎯 Comment bien réviser&nbsp;?</h3>
                 
                 <ol>
                     <li>
@@ -109,7 +115,7 @@
                         <strong>Varie les activités</strong> - Alterne lecture, exercices et fiches.
                     </li>
                     <li>
-                        <strong>Explique à voix haute</strong> - Si tu peux expliquer, c'est que tu as compris !
+                        <strong>Explique à voix haute</strong> - Si tu peux expliquer, c'est que tu as compris&nbsp;!
                     </li>
                     <li>
                         <strong>Utilise des couleurs</strong> - Surligne les mots importants.
@@ -121,7 +127,7 @@
             </div>
             
             <div class="alert alert-warning" style="margin-top: 1.5rem;">
-                <strong>Attention !</strong> Si tu te sens dépassé, n'hésite pas à demander de l'aide à un adulte ou un professeur.
+                <strong>Attention&nbsp;!</strong> Si tu te sens dépassé, n'hésite pas à demander de l'aide à un adulte ou un professeur.
             </div>
         </section>
         
@@ -142,7 +148,7 @@
         
         <!-- Section : Formulaire exemple -->
         <section style="margin-top: 3rem;">
-            <h2>Tu as une question ?</h2>
+            <h2>Tu as une question&nbsp;?</h2>
             
             <form>
                 <label for="name">Ton prénom</label>
@@ -178,6 +184,9 @@
             <a href="accessibilite.html">Accessibilité</a>
         </p>
     </footer>
+
+    <!-- Scripts -->
+    <script src="reading-mode-toggle.js"></script>
 
 </body>
 </html>
