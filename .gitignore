@@ -1,0 +1,49 @@
+# Fichiers d'environnement
+.env
+.env.local
+.env.production
+.env.development
+
+# Dépendances
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Fichiers de build
+dist/
+build/
+.cache/
+
+# Fichiers Netlify
+.netlify/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+*.log
+
+# Éditeurs / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# Fichiers temporaires
+tmp/
+temp/
+*.tmp
+
+# Fichiers de test
+coverage/
+.nyc_output/
+
+# Clés et certificats
+*.pem
+*.key
+*.cert
