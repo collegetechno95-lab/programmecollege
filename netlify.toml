@@ -1,0 +1,75 @@
+# Configuration Netlify pour Aide Devoirs Collège
+
+[build]
+  # Dossier de publication (à adapter selon votre structure)
+  publish = "."
+  
+  # Commande de build (à décommenter si vous utilisez un bundler)
+  # command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Redirections et règles de routage
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# Redirection des anciennes URLs si nécessaire
+# [[redirects]]
+#   from = "/old-path"
+#   to = "/new-path"
+#   status = 301
+
+# Headers de sécurité
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Cache pour les assets statiques
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Configuration des fonctions Netlify (si besoin)
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Paramètres de prévisualisation
+[context.deploy-preview]
+  publish = "."
+
+# Paramètres de production
+[context.production]
+  publish = "."
+
+# Paramètres de branche (exemple pour une branche dev)
+[context.dev]
+  publish = "."
+  
+# Configuration des plugins (optionnel)
+# [[plugins]]
+#   package = "@netlify/plugin-lighthouse"
+
+# Configuration pour les formulaires Netlify
+# [build.processing]
+#   [build.processing.html]
+#     pretty_urls = true
