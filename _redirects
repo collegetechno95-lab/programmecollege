@@ -1,0 +1,14 @@
+# Redirections Netlify pour Aide Devoirs Collège
+
+# Redirection des fonctions API
+/api/*  /.netlify/functions/:splat  200
+
+# Support du routing SPA (si vous utilisez un framework comme React/Vue plus tard)
+# /*    /index.html   200
+
+# Redirections d'anciennes URLs (exemples)
+# /ancien-lien  /nouveau-lien  301
+# /aide         /matieres      301
+
+# Redirection par défaut pour les 404
+# /*    /404.html   404
