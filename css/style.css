@@ -1,6 +1,6 @@
 /**
  * STYLE.CSS - Aide Devoirs Collège
- * Optimisé pour les élèves dyslexiques
+ * Optimisé pour les élèves dyslexiques avec option mode normal
  * Principes : lisibilité maximale, clarté visuelle, confort de lecture
  */
 
@@ -15,7 +15,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
 
 /* ==========================================
-   VARIABLES CSS
+   VARIABLES CSS - MODE DYSLEXIQUE (par défaut)
    ========================================== */
 
 :root {
@@ -63,6 +63,43 @@
 }
 
 /* ==========================================
+   MODE NORMAL - Variables alternatives
+   ========================================== */
+
+body.normal-mode {
+  /* Polices standard */
+  --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  --font-heading: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  
+  /* Fond blanc pur */
+  --color-bg: #FFFFFF;
+  --color-text: #1a1a1a;
+  
+  /* Tailles de police standard */
+  --font-size-base: 16px;
+  --font-size-small: 14px;
+  --font-size-large: 20px;
+  --font-size-xl: 24px;
+  --font-size-xxl: 32px;
+  
+  /* Espacements standard */
+  --line-height: 1.6;
+  --letter-spacing: normal;
+  --word-spacing: normal;
+  --paragraph-spacing: 1em;
+  
+  /* Largeur de lecture standard */
+  --max-reading-width: 80ch;
+  
+  /* Espacements réduits */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+}
+
+/* ==========================================
    RESET ET BASE
    ========================================== */
 
@@ -92,6 +129,31 @@ body {
 }
 
 /* ==========================================
+   CORRECTION TYPOGRAPHIE FRANÇAISE
+   Éviter les sauts de ligne avant : ; ! ?
+   ========================================== */
+
+/* Espace insécable avant les ponctuations doubles */
+body {
+  /* Empêcher les sauts de ligne non désirés */
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+/* Solution CSS pour les ponctuations */
+:lang(fr) {
+  /* Amélioration de la gestion des espaces */
+  text-rendering: optimizeLegibility;
+}
+
+/* Classes utilitaires pour forcer l'espace insécable */
+.nbsp {
+  white-space: nowrap;
+}
+
+/* Alternative : utiliser &nbsp; dans le HTML pour ? : ; ! */
+
+/* ==========================================
    TYPOGRAPHIE
    ========================================== */
 
@@ -106,6 +168,17 @@ h1, h2, h3, h4, h5, h6 {
   /* Aide visuelle : bordure à gauche */
   border-left: 4px solid var(--color-primary);
   padding-left: var(--spacing-sm);
+}
+
+/* En mode normal, titres sans bordure gauche */
+body.normal-mode h1,
+body.normal-mode h2,
+body.normal-mode h3,
+body.normal-mode h4,
+body.normal-mode h5,
+body.normal-mode h6 {
+  border-left: none;
+  padding-left: 0;
 }
 
 h1 {
@@ -137,17 +210,30 @@ p {
   text-align: left;
 }
 
-/* Emphase - Éviter l'italique (difficile à lire) */
+/* Emphase - Éviter l'italique (difficile à lire) en mode dyslexique */
 em, i {
   font-style: normal;
   font-weight: 600;
   color: var(--color-accent);
 }
 
+/* En mode normal, autoriser l'italique */
+body.normal-mode em,
+body.normal-mode i {
+  font-style: italic;
+  font-weight: normal;
+  color: inherit;
+}
+
 /* Texte important */
 strong, b {
   font-weight: 700;
   color: var(--color-primary);
+}
+
+body.normal-mode strong,
+body.normal-mode b {
+  color: inherit;
 }
 
 /* ==========================================
@@ -165,7 +251,7 @@ li {
   line-height: var(--line-height);
 }
 
-/* Puces personnalisées plus visibles */
+/* Puces personnalisées plus visibles en mode dyslexique */
 ul {
   list-style: none;
 }
@@ -176,6 +262,15 @@ ul li::before {
   font-weight: bold;
   font-size: 1.2em;
   margin-right: var(--spacing-sm);
+}
+
+/* Mode normal : puces standards */
+body.normal-mode ul {
+  list-style: disc;
+}
+
+body.normal-mode ul li::before {
+  content: none;
 }
 
 /* Numéros de liste plus visibles */
@@ -201,6 +296,19 @@ ol li::before {
   border-radius: 4px;
 }
 
+/* Mode normal : numéros standards */
+body.normal-mode ol {
+  list-style: decimal;
+}
+
+body.normal-mode ol li {
+  padding-left: 0;
+}
+
+body.normal-mode ol li::before {
+  content: none;
+}
+
 /* ==========================================
    LIENS
    ========================================== */
@@ -212,6 +320,11 @@ a {
   text-underline-offset: 3px;
   font-weight: 600;
   transition: all 0.2s ease;
+}
+
+body.normal-mode a {
+  font-weight: normal;
+  text-decoration-thickness: 1px;
 }
 
 a:hover {
@@ -249,6 +362,12 @@ button,
   
   /* Ombre pour donner du relief */
   box-shadow: var(--box-shadow);
+}
+
+body.normal-mode button,
+body.normal-mode .btn {
+  font-size: var(--font-size-base);
+  min-height: 40px;
 }
 
 .btn-primary {
@@ -292,6 +411,63 @@ button:focus,
 }
 
 /* ==========================================
+   BOUTON TOGGLE MODE DYSLEXIQUE/NORMAL
+   ========================================== */
+
+#reading-mode-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: white;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 50px;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  min-height: auto;
+  min-width: auto;
+}
+
+#reading-mode-toggle:hover {
+  background-color: var(--color-primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+#reading-mode-toggle:active {
+  transform: translateY(0);
+}
+
+/* Animation de l'icône */
+#reading-mode-toggle .icon {
+  font-size: 1.2em;
+  transition: transform 0.3s ease;
+}
+
+#reading-mode-toggle:hover .icon {
+  transform: rotate(180deg);
+}
+
+/* Version mobile */
+@media (max-width: 640px) {
+  #reading-mode-toggle {
+    bottom: 10px;
+    right: 10px;
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}
+
+/* ==========================================
    CARTES / CONTENEURS
    ========================================== */
 
@@ -308,6 +484,14 @@ button:focus,
 .card:hover {
   transform: translateY(-4px);
   box-shadow: var(--box-shadow-hover);
+}
+
+body.normal-mode .card {
+  border: 1px solid var(--color-border);
+}
+
+body.normal-mode .card:hover {
+  transform: translateY(-2px);
 }
 
 .card-title {
@@ -347,6 +531,11 @@ label {
   color: var(--color-text);
 }
 
+body.normal-mode label {
+  font-size: var(--font-size-base);
+  font-weight: 500;
+}
+
 /* Champs de saisie larges et espacés */
 input[type="text"],
 input[type="email"],
@@ -367,6 +556,16 @@ select {
   min-height: 48px;
   
   transition: border-color 0.2s ease;
+}
+
+body.normal-mode input[type="text"],
+body.normal-mode input[type="email"],
+body.normal-mode input[type="password"],
+body.normal-mode input[type="date"],
+body.normal-mode textarea,
+body.normal-mode select {
+  min-height: 40px;
+  border: 1px solid var(--color-border);
 }
 
 input:focus,
@@ -399,6 +598,11 @@ textarea {
   margin-bottom: var(--spacing-md);
   border-left: 5px solid;
   font-weight: 500;
+}
+
+body.normal-mode .alert {
+  border-left-width: 3px;
+  font-weight: normal;
 }
 
 .alert-success {
@@ -437,6 +641,11 @@ textarea {
   font-weight: 600;
   margin-right: var(--spacing-xs);
   margin-bottom: var(--spacing-xs);
+}
+
+body.normal-mode .badge {
+  font-weight: 500;
+  padding: 3px 10px;
 }
 
 .badge-primary {
@@ -493,6 +702,10 @@ nav a {
   transition: all 0.2s ease;
 }
 
+body.normal-mode nav a {
+  font-weight: normal;
+}
+
 nav a:hover {
   background-color: var(--color-primary);
   color: white;
@@ -529,9 +742,18 @@ th {
   font-size: var(--font-size-large);
 }
 
+body.normal-mode th {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+}
+
 td {
   padding: var(--spacing-md);
   border-bottom: 2px solid var(--color-border);
+}
+
+body.normal-mode td {
+  border-bottom: 1px solid var(--color-border);
 }
 
 tr:hover {
@@ -552,6 +774,10 @@ img {
   border-radius: var(--border-radius);
   /* Bordure pour délimiter clairement les images */
   border: 2px solid var(--color-border);
+}
+
+body.normal-mode img {
+  border: 1px solid var(--color-border);
 }
 
 /* ==========================================
@@ -585,6 +811,10 @@ img {
   padding: 2px 6px;
   border-radius: 4px;
   font-weight: 600;
+}
+
+body.normal-mode .highlight {
+  font-weight: normal;
 }
 
 /* ==========================================
@@ -683,8 +913,9 @@ img {
     font-size: 12pt;
   }
   
-  .no-print {
-    display: none;
+  .no-print,
+  #reading-mode-toggle {
+    display: none !important;
   }
   
   a {
