@@ -1,1 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aide aux devoirs pour collégiens - Interface adaptée aux dyslexiques">
+    <title>Aide Devoirs Collège - Accueil</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <!-- Navigation principale -->
+    <nav>
+        <ul>
+            <li><a href="index.html" class="active">Accueil</a></li>
+            <li><a href="matieres.html">Matières</a></li>
+            <li><a href="organisation.html">Mon Organisation</a></li>
+            <li><a href="aide.html">Besoin d'aide ?</a></li>
+        </ul>
+    </nav>
 
+    <!-- En-tête principal -->
+    <header class="content-section">
+        <h1>Bienvenue sur ton espace d'aide aux devoirs 📚</h1>
+        
+        <div class="alert alert-success">
+            <strong>Bravo !</strong> Tu as décidé de prendre en main tes devoirs. C'est déjà une grande étape !
+        </div>
+        
+        <p>
+            Cet espace est fait pour toi. Ici, pas de jugement, juste de l'aide claire et des outils simples pour réussir tes devoirs et mieux t'organiser.
+        </p>
+    </header>
+
+    <!-- Section principale -->
+    <main class="content-section">
+        
+        <!-- Section : Matières disponibles -->
+        <section>
+            <h2>Explore les matières</h2>
+            
+            <p>
+                Choisis la matière dans laquelle tu as besoin d'aide. Tu trouveras des explications simples et des exemples concrets.
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                
+                <div class="card">
+                    <div class="card-title">📐 Mathématiques</div>
+                    <p>Géométrie, calculs, fractions... On t'explique tout pas à pas.</p>
+                    <button class="btn btn-primary">Voir les cours</button>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">📝 Français</div>
+                    <p>Grammaire, conjugaison, rédaction... Deviens un pro de la langue !</p>
+                    <button class="btn btn-primary">Voir les cours</button>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">🌍 Histoire-Géo</div>
+                    <p>Dates, cartes, personnages... L'Histoire devient facile.</p>
+                    <button class="btn btn-primary">Voir les cours</button>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">🔬 Sciences</div>
+                    <p>SVT, Physique-Chimie... La science c'est passionnant !</p>
+                    <button class="btn btn-primary">Voir les cours</button>
+                </div>
+                
+            </div>
+        </section>
+        
+        <!-- Section : Organisation -->
+        <section style="margin-top: 3rem;">
+            <h2>Organise tes devoirs</h2>
+            
+            <div class="alert alert-info">
+                <strong>Astuce :</strong> Bien s'organiser, c'est la moitié du travail !
+            </div>
+            
+            <p>
+                Utilise nos outils pour planifier tes devoirs et ne plus jamais être débordé.
+            </p>
+            
+            <ul>
+                <li>Crée ton emploi du temps personnalisé</li>
+                <li>Note tous tes devoirs au même endroit</li>
+                <li>Reçois des rappels pour ne rien oublier</li>
+                <li>Suis tes progrès jour après jour</li>
+            </ul>
+            
+            <button class="btn btn-secondary" style="margin-top: 1rem;">Créer mon planning</button>
+        </section>
+        
+        <!-- Section : Conseils méthodologie -->
+        <section style="margin-top: 3rem;">
+            <h2>Conseils pour mieux apprendre</h2>
+            
+            <div class="card">
+                <h3>🎯 Comment bien réviser ?</h3>
+                
+                <ol>
+                    <li>
+                        <strong>Fais des pauses</strong> - Travaille 25 minutes, repose-toi 5 minutes.
+                    </li>
+                    <li>
+                        <strong>Varie les activités</strong> - Alterne lecture, exercices et fiches.
+                    </li>
+                    <li>
+                        <strong>Explique à voix haute</strong> - Si tu peux expliquer, c'est que tu as compris !
+                    </li>
+                    <li>
+                        <strong>Utilise des couleurs</strong> - Surligne les mots importants.
+                    </li>
+                    <li>
+                        <strong>Révise régulièrement</strong> - Un peu chaque jour vaut mieux que tout la veille.
+                    </li>
+                </ol>
+            </div>
+            
+            <div class="alert alert-warning" style="margin-top: 1.5rem;">
+                <strong>Attention !</strong> Si tu te sens dépassé, n'hésite pas à demander de l'aide à un adulte ou un professeur.
+            </div>
+        </section>
+        
+        <!-- Section : Exemples de badges -->
+        <section style="margin-top: 3rem;">
+            <h2>Tes progrès</h2>
+            
+            <p>
+                Gagne des badges en complétant tes devoirs et en progressant dans les matières.
+            </p>
+            
+            <div>
+                <span class="badge badge-primary">5 devoirs terminés</span>
+                <span class="badge badge-secondary">Semaine complète</span>
+                <span class="badge badge-accent">Expert en maths</span>
+            </div>
+        </section>
+        
+        <!-- Section : Formulaire exemple -->
+        <section style="margin-top: 3rem;">
+            <h2>Tu as une question ?</h2>
+            
+            <form>
+                <label for="name">Ton prénom</label>
+                <input type="text" id="name" name="name" placeholder="Ex : Lucas">
+                
+                <label for="subject">Matière concernée</label>
+                <select id="subject" name="subject">
+                    <option value="">Choisis une matière</option>
+                    <option value="maths">Mathématiques</option>
+                    <option value="francais">Français</option>
+                    <option value="histgeo">Histoire-Géographie</option>
+                    <option value="sciences">Sciences</option>
+                    <option value="autre">Autre</option>
+                </select>
+                
+                <label for="question">Ta question</label>
+                <textarea id="question" name="question" placeholder="Explique ce qui te pose problème..."></textarea>
+                
+                <button type="submit" class="btn btn-primary">Envoyer ma question</button>
+            </form>
+        </section>
+        
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="content-section text-center" style="margin-top: 4rem; padding-top: 2rem; border-top: 2px solid var(--color-border);">
+        <p>
+            <strong>Aide Devoirs Collège</strong> - Fait avec ❤️ pour aider tous les élèves à réussir
+        </p>
+        <p style="font-size: var(--font-size-small); color: #718096;">
+            <a href="mentions-legales.html">Mentions légales</a> | 
+            <a href="contact.html">Contact</a> | 
+            <a href="accessibilite.html">Accessibilité</a>
+        </p>
+    </footer>
+
+</body>
+</html>
